@@ -382,5 +382,24 @@ img{
     </script>
     <!-- splideのCDN -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+    new Splide(".splide", {
+    type: "loop",
+    autoplay: true, // 自動再生
+    speed: 1000, // スライドの移動時間
+    rewind: true, // スライドがの最後まで行ったら先頭に戻る
+    perPage: 1, // 1ページに何枚スライドを表示するか
+    gap:0, // スライド間余白
+    breakpoints: { // ブレイクポイントの設定
+        640: {
+        perPage: 1,
+        },
+    },
+    wheel:true,
+    waitForTransition:true,
+    arrows:false,
+    pagination:false,
+}).mount();
+</script>
 </body>
 </html>
