@@ -73,35 +73,31 @@ header h1 {
     margin:0 auto;
 }
 .hotel {
-    margin-top: 30px;
+    margin-top: 80px;
+    text-align: center;
     width:100%;
-    border:1px solid #333;
-    box-sizing: border-box;
 }
-.hotel__img {
+.hotel__img img{
     width:100%;
-    height:210px;
+    height:100%;
+    object-fit: contain;
 }
 .splide__slide img {
     width: 100%;
-    height: auto;
-}
-details {
-    max-width: 520px;
+    height: 100%;
+    object-fit: contain;
 }
 details summary {
-    line-height:30px;
-    width:200px;
-    margin:5px auto;
+    position: relative;
+    display: inline-block;
     color:#fff;
-    display: block;
     list-style: none;
     text-align: center;
     cursor: pointer;
-    position: relative;
-    padding: 0.5rem;
+    padding: 8px 16px;
+    padding-left: 50px;
+    margin-top: 8px;
     border:outset medium #228B22;
-    border-radius: 10px;
     background: #228B22;
     transition: background-color .3s;
 }
@@ -128,6 +124,10 @@ details summary::before {
 }
 details summary:hover::before{
     border-color:#097b27;
+}
+.details-content {
+    text-align: left;
+    text-indent: 1vw;
 }
 footer{
     margin-top:30px;
@@ -166,13 +166,16 @@ header h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 800px;
+    max-width: 1200px;
 }
 .hotel{
-    width:calc(50% - 5px);
+    width:calc(100%/3);
 }
-.hotel__img{
-    height:300px;
+.hotel__img img{
+    height:200px;
+}
+details summary {
+    font-size:clamp(14px,1vw,20px);
 }
 }
 </style>
@@ -184,7 +187,7 @@ header h1 {
             <div class="header__container">
                 <h1></h1>
                 <div class="header__log-in">
-                    <button class="log-in-button">ログイン</button>
+                    <button id="btn1" class="log-in-button">ログイン</button>
                 </div>
             </div>
         </header>
@@ -332,6 +335,9 @@ header h1 {
         <footer>
             <p class="copyright"><small>Copyright(C)&nbsp;Sasaten&nbsp;Travel&nbsp;All&nbsp;Rights&nbsp;Reserved.</small></p>
         </footer>
+        <button id = "btn2">
+            btn2
+            </button>
     </div><!--main-->
 
 <script>
@@ -410,7 +416,8 @@ header h1 {
     new Splide(".splide", {
     type: "loop",
     autoplay: true, // 自動再生
-    speed: 1000, // スライドの移動時間
+    interval: 3000,
+    speed: 1200, // スライドの移動時間
     rewind: true, // スライドがの最後まで行ったら先頭に戻る
     perPage: 1, // 1ページに何枚スライドを表示するか
     gap:0, // スライド間余白
@@ -424,6 +431,29 @@ header h1 {
     arrows:false,
     pagination:false,
 }).mount();
+</script>
+<script>
+    const btn1 = document.getElementById("btn1");
+    btn1.addEventListener("click",output);
+
+    function output(e) {
+        console.log(e);
+    }
+
+    const btn2 = document.getElementById("btn2");
+let count = 1;　//on/off用のカウンター変数
+btn2.addEventListener("click",show_device);
+
+function show_device(e) {
+
+if(count ===1) {
+      e.target.innerText = e.pointerType;
+      count = 0;
+} else {
+      e.target.innerText = "btn2";
+      count = 1;
+}
+}
 </script>
 </body>
 </html>
